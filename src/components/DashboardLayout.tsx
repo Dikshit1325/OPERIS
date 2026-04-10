@@ -1,7 +1,7 @@
 import { useAuth } from "@/contexts/AuthContext";
 import { useNavigate, useLocation } from "react-router-dom";
 import {
-  LayoutDashboard, BarChart3, Users, AlertTriangle, UserCircle, LogOut, Menu,
+  LayoutDashboard, BarChart3, Users, AlertTriangle, UserCircle, LogOut, Menu, FlaskConical,
 } from "lucide-react";
 import { NavLink } from "@/components/NavLink";
 import {
@@ -12,6 +12,7 @@ import {
 const navItems = [
   { title: "Dashboard", url: "/dashboard", icon: LayoutDashboard },
   { title: "Analytics", url: "/analytics", icon: BarChart3 },
+  { title: "Simulation", url: "/simulation", icon: FlaskConical },
   { title: "Employees", url: "/employees", icon: Users },
   { title: "Alerts", url: "/alerts", icon: AlertTriangle },
   { title: "Profile", url: "/profile", icon: UserCircle },
