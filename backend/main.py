@@ -20,8 +20,8 @@ _latest: dict[str, Any] | None = None
 # Allow the frontend dev server to call this API.
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://operis-ai.netlify.app"],  # ✅ FIXED
-    allow_credentials=True,
+    allow_origins=["*"],        # allow all
+    allow_credentials=False,   # ⚠️ IMPORTANT CHANGE
     allow_methods=["*"],
     allow_headers=["*"],
 )
