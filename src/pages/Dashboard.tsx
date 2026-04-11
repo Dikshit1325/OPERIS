@@ -5,6 +5,30 @@ import { API_BASE } from "@/lib/api";
 import { TrendingUp, AlertTriangle, Clock, Users, Radio } from "lucide-react";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from "recharts";
 import DashboardLayout from "@/components/DashboardLayout";
+import React from 'react';
+
+// Error Boundary Component
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError(error) {
+    return { hasError: true };
+  }
+
+  componentDidCatch(error, errorInfo) {
+    console.error('Error caught in ErrorBoundary:', error, errorInfo);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return <div>Something went wrong. Please try again later.</div>;
+    }
+    return this.props.children;
+  }
+}
 
 const BURNOUT_COLORS = { Low: "#22C55E", Medium: "#F59E0B", High: "#EF4444" };
 
@@ -91,9 +115,8 @@ export default function Dashboard() {
   const useLive = live?.has_data === true;
   const mockKpis = getKPIs();
   const kpis = useLive && live.kpis ? live.kpis : mockKpis;
-  const burnoutDist =
-    useLive && live.burnout_distribution?.length ? live.burnout_distribution : getBurnoutDistribution();
-  const alerts = useLive ? live!.alerts : getAlerts().filter((a) => a.level === "High").slice(0, 5);
+  const burnoutDist = useLive && live?.burnout_distribution?.length ? live.burnout_distribution : getBurnoutDistribution();
+  const alerts = useLive && live?.alerts?.length ? live.alerts : getAlerts().filter((a) => a.level === "High").slice(0, 5);
   const liveChartData =
     useLive && live!.productivity_trend.length > 0
       ? live!.productivity_trend.map((r) => ({
@@ -242,6 +265,17 @@ export default function Dashboard() {
                 </div>
               ))}
             </div>
+          </div>
+        )}
+
+        {burnoutDist.length > 0 && (
+          <div className="flex gap-4 mt-3 justify-center flex-wrap">
+            {burnoutDist.map((b) => (
+              <div key={b.level} className="flex items-center gap-1.5 text-xs text-muted-foreground">
+                <div className="h-2 w-2 rounded-full" style={{ background: BURNOUT_COLORS[b.level as keyof typeof BURNOUT_COLORS] }} />
+                {b.level}: {b.count}
+              </div>
+            ))}
           </div>
         )}
 

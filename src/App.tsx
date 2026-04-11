@@ -1,5 +1,5 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Navigate, Router } from "react-router-dom";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -15,6 +15,7 @@ import Alerts from "./pages/Alerts";
 import Profile from "./pages/Profile";
 import Simulation from "./pages/Simulation";
 import NotFound from "./pages/NotFound";
+import ErrorBoundary from "./pages/Dashboard";
 
 const queryClient = new QueryClient();
 
@@ -49,7 +50,12 @@ const App = () => (
       <Toaster />
       <Sonner />
       <AuthProvider>
-        <BrowserRouter>
+        <BrowserRouter
+          future={{
+            v7_startTransition: true,
+            v7_relativeSplatPath: true,
+          }}
+        >
           <AppRoutes />
         </BrowserRouter>
       </AuthProvider>
