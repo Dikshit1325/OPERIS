@@ -15,7 +15,8 @@ Operis AI is a full-stack system that combines:
 
 🏗️ Architecture
 Chrome Extension → FastAPI Backend → ML Model → React Dashboard
-✨ Features
+
+✨ Features of Operis-AI
 🔍 Real-Time Tracking
 Tracks user activity (time spent, tasks, meetings)
 Detects current working context (websites)
