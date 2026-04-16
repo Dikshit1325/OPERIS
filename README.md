@@ -1,10 +1,9 @@
 🚀 Operis AI – Burnout Prediction & Productivity Monitoring System
-
 A real-time intelligent system that tracks user activity, predicts burnout risk using Machine Learning, and visualizes insights through a live dashboard.
 
 📌 Overview
 
-Operis AI is a full-stack system that combines:
+Operis-AI is a full-stack system that combines:
 
 🧠 Machine Learning (burnout prediction)
 🌐 Chrome Extension (user activity tracking)
@@ -131,3 +130,4 @@ Multi-user tracking
 Real-time WebSocket updates
 AI-based recommendations
 Slack / Email alerts
+
