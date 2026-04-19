@@ -4,7 +4,7 @@ A real-time intelligent system that tracks user activity, predicts burnout risk 
 📌 Overview
 
 Operis-AI is a full-stack system that combines:
-okky
+
 🧠 Machine Learning (burnout prediction)
 🌐 Chrome Extension (user activity tracking)
 ⚡ FastAPI Backend (processing + APIs)
